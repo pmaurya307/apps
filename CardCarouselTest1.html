@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="ISO-8859-1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<title>Carousel</title>
+<style type="text/css">
+.carouselImg {
+	height: 200px;
+	transition: transform .2s;
+}
+.carouselImg:hover {
+    transform: scale(1.2); 
+}
+</style>
+</head>
+<script type="text/javascript">
+	var app = angular.module("app", []);
+	app.controller('test', function($scope) {
+
+		$scope.imageIndex = 1;
+
+		$scope.DecreaseIndex = function() {
+			if ($scope.imageIndex > 1) {
+				$scope.imageIndex--;
+			}
+		}
+		$scope.IncreaseIndex = function() {
+			if ($scope.imageIndex < 13) {
+				$scope.imageIndex++;
+			}
+		}
+
+	});
+</script>
+<body ng-controller="test" class="container-fluid">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+		<div class="row">
+
+			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+				<img class="carouselImg zoom"
+					src="http://localhost:8080/Webb/images/{{imageIndex}}.jpg"><br />
+				<br />
+				<div align="center">ajshdkasd</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+				<img class="carouselImg"
+					src="http://localhost:8080/Webb/images/{{imageIndex+1}}.jpg"><br />
+				<br />
+				<div align="center">ajshdkasd</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+				<img class="carouselImg"
+					src="http://localhost:8080/Webb/images/{{imageIndex+2}}.jpg"><br />
+				<br />
+				<div align="center">ajshdkasd</div>
+			</div>
+		</div>
+	</div>
+	<button ng-click="DecreaseIndex()">Prev</button>
+	<button ng-click="IncreaseIndex()">Next</button>
+</body>
+</html>
